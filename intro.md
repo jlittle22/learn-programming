@@ -1,7 +1,8 @@
 # Learn Programming
 
 ```
-Computer programming or coding is the composition of sequences of instructions, called programs, that computers can follow to perform tasks.
+Computer programming or coding is the composition of sequences of instructions,
+called programs, that computers can follow to perform tasks.
 ```
 via [Wikipedia: Computer programming](https://en.wikipedia.org/wiki/Computer_programming)
 
