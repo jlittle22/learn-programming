@@ -31,7 +31,7 @@ In layman's terms, JavaScript is one of the most flexible languages in existence
 ```
 JavaScript: Just say no.
 ```
-Nonetheless, JavaScript is a reasonable place to start learning how to program.
+Nonetheless, JavaScript is a reasonable place to start learning how to program. (It also happens to be the language our freelance projects use.)
 
 ### Running code
 As you continue reading, I encourage you to enter any code you see in code snippets into this [online JavaScript compiler](https://www.programiz.com/javascript/online-compiler/). We won't use this compiler for long, but it's a fine place to start.
@@ -68,9 +68,8 @@ As you program, you should develop a habit of leaving reminders for yourself. Be
 Your `<identifier>` should be unique amongst developers working on your project. It should also be something that others can easily associate with you. `TODO(8x73j4)` is a pretty crummy identifier because its not obviously related to you. Conversely, `TODO(john)` is also bad because there are _a lot_ of people named John. Some identifiers I've seen:
 ```javascript
 jsnl  // Mine.
-madrugaur  // My brother, Braden's.
-goldstei  // A coworker named Josh Goldstein.
-bdgarr  // A coworker named Brennan Garrett.
+madrugar  // My brother, Braden's.
+jmes  // A friend named James.
 ```
 
 ### Output
@@ -443,13 +442,110 @@ Output:
 ```
 31
 ```
-Apparently there 31 perfect squares in the range [1, 1000]. Who knew? Not me.
+Apparently there are 31 perfect squares in the range `[1, 1000]`. Who knew? Not me.
 
 Now imagine how complicated the code for our `CountPerfectSquaresInTheFirstNNaturalNumbers` function would have been if we didn't have the `IsPerfectSquare` functon. Probably a lot. By breaking the problem down in smaller, simpler pieces, we were able to come up with a correct solution much more quickly.
 
 Another benefit of functions is that we can _reuse_ them for multiple purposes. What if at some point in the future we want to write a new function that needs to know if a number is a perfect square? Then we can use `IsPerfectSquare` for that too! Similarly, what if we run into a problem that can only be solved by knowing how much perfect squares exist in a range of integers? Well, then we can use our `CountPerfectSquaresInTheFirstNNaturalNumbers` for that too.
 
-Functions support abstraction (hiding away complex implementation details so our brains are free to reason about harder, high-level problems without getting stuck in the weeds) _and_ code reuse (once we've solved the problem once, we never have to solve it again). We can compose functions together to produce more useful functions until ultimately, one of our funtions is sending a chat message to someone halfway around the world.
+Functions support abstraction (hiding away complex implementation details so our brains are free to reason about harder, high-level problems without getting stuck in the weeds) _and_ code reuse (once we've solved the problem once, we never have to solve it again). We can compose functions together to produce more useful functions until, ultimately, one of our funtions is sending a chat message to someone halfway around the world.
+
+### Types
+The last concept I want to introduce in this guide is types. "A type system is a logical system comprising a set of rules that assigns a property called a type to ever term." - [Type system Wikipedia](https://en.wikipedia.org/wiki/Type_system)
+
+Every "term" in your programs ("term" is a weird term here, pun intended, so let's just use "variable" instead) will have a type. JavaScript is notorious for its type system because it rarely tells the programmer that they've done something bad. That might seem nice, but just because the compiler doesn't _tell_ you that you've done something wrong doesn't mean you didn't do something wrong!
+
+There are three extremely important types in JavaScript (and several others that we'll get to later). They are:
+1. Number
+2. String
+3. Boolean
+
+In your solutions to the programming challenges and all of the code snippets in this document, every single variable will be assigned one of these types. Here's an example:
+```javascript
+let a_number = 1234;  // The type of this variable is Number
+let a_string = "This is a string!";  // The type of this variable is String
+let a_bool = false;  // The type of this variable is Boolean!
+```
+A Number variable stores, well, a number.
+
+A String variable stores a sequence of 'characters' (i.e. letters and symbols). Strings are used to represent written language in programs as you've seen regularly in this document.
+
+A Boolean variable stores a binary `true` or `false` value.
+
+Each of these types (Number, String, or Boolean) has a set of operations that it supports. Confusingly, some of the operations overlap. For example, you can add two Numbers like this:
+```javascript
+console.log(4 + 5);
+```
+Output:
+```
+9
+```
+But you can also add two Strings in the same exact way (it's not actually called addition -- it's concatenation):
+```javascript
+console.log("Hello," + " world!");
+```
+Output:
+```
+Hello, world!
+```
+Surprisingly (to programmers in my field), JavaScript will allow a program like this to run without problems:
+```javascript
+console.log("Hello, " + 1235);
+```
+In strongly typed languages, the compiler would reject the program because you're adding a String with a Number which makes no sense. When was the last time you added text to a number? In this regard, JavaScript is weakly typed. It lets you play fast and dirty with the types in your program which can cause subtle and hard-to-find bugs. For example, what do you think will print to console when you run this program?
+```javascript
+// TODO: Run this program in the online JS compiler.
+console.log("100" + 100);
+```
+In this example, the type mismatch is pretty obvious, but it gets obfuscated when we add variable names, functions, and parameters:
+```javascript
+// NOTE: This program has a bug! Don't use it for reference if you'd like your code to be correct.
+function Add(x, y) {
+  return x + y;
+}
+
+let bank_account_value = 1205;  // dollars
+
+let new_transaction = prompt("Enter deposit size ($): ");
+
+bank_account_value = Add(bank_account_value, new_transaction);
+
+console.log("New account balance:", bank_account_value);
+```
+The bug is that we're adding a String and a Number, but the source code doesn't make that immediately clear. On top of that, the JS compiler doesn't _tell_ us that we're doing something wrong. This is the primary drawback of languages like JavaScript. Many other languages are designed, both in syntax and compilation, to make it abundantly clear when the programmer is making a mistake like this.
+
+Type systems are very complex, so the only thing I hope you take way from this section is that as you work on the programming challenges (and any time you're programming), pay close attention to the _types_ of the variables you're using. Remember that every variable must have _some_ type and it _always_ matters if you want your code to be correct. When you write a function, think about what types you're expecting its parameters to have and remember that (or write it down as a comment) when you're using the function in other places.
+
+## Programming challenges
+There are two programming challenges associated with the concepts in this document. In each challenge, I outline the possible inputs and what your program should _do_. Other than those two things, the solution is entirely up to you.
+
+Write your solutions in a `.js` file.
+
+### Challenge 1
+
+Prompt the user for an integer via the command line (i.e. use the `prompt` function). Print (to the console) whether the integer has either:
+
+1. One digit.
+2. Two digits.
+3. Three or more digits.
+
+#### Hints
+1. Research the `parseInt` function online.
+2. Remember that integers can be positive _and_ negative.
+
+### Challenge 2
+
+Prompt the user for a number of cents (the unit of money). Print how many quarters, dimes, nickels, and pennies are needed for exactly how much the user input using the _least number of coins total_.
+
+#### Examples
+```
+Input: 25 --> 1 quarter  (e.g. 25 pennies is wrong because it uses more coins.)
+Input: 27 --> 1 quarter, 2 pennies
+Input: 10 --> 1 dime
+```
+#### Hints
+1. Recall the modulo operator (%).
+2. Remember that you can _change_ variables (e.g. perhaps by subtraction).
 
 ## Glossary
 I use a lot of terms that I don't expect someone who's just starting to program to understand (e.g. weak type system, dynamic, programming "paradigms"). However, there are others that I think are important to learn now which are listed below.
@@ -458,7 +554,27 @@ I use a lot of terms that I don't expect someone who's just starting to program 
 A series of instructions consumed by a computer to perform a task.
 
 ### State
-The remembered information in a program. 
+The remembered information in a program typically stored in variables. 
 
 ### Bug
 A behavior exhibited by a program while running that is incorrect attributed to an implementation error in some part of the software.
+
+### Variable
+An entity in a program that has a _name_ and stores a piece of the program's state.
+
+### Function
+A bundle of instructions packaged together with a name that can be reused in several places throughout the program.
+
+## People
+The "Grass Touchers LLC" Discord server is home to many friendly and talented people that are passionate about programming (or video games).
+
+Here are just a few who are around to talk about programming and excited to answer questions.
+
+### Braden (madrugar)
+Braden is my brother and a senior studying Computer Science at the Rochester Institute of Technology. He's interned as a software engineer at Bentley Systems, Datto, and SpaceX.
+
+### James (bridge_)
+James and I graduated from the Tufts School of Engineering together where we both studied Computer Science. James just finished his Master's degree in CS at Northwestern University. He interned at Google as a software engineer last summer and at Micron Technologies the summer before.
+
+### Max (mgreenw)
+Max is a veteran web developer who also studied CS at Tufts but graduated several years before me (I believe in Dec 2018). He's worked as a software engineer at several companies including recently directing engineering at a small start up. Certainly our resident JavaScript expert.
