@@ -325,10 +325,7 @@ fn name(/* params */) -> /* return type */ {
 
 In Python,
 ```python
-# You'll note Python uses different syntax for its comments. And, it doesn't
-# support inline comments like the others, so I have no way to comment out the
-# "params" below.
-def name(params):
+def name("""params"""):
     # body
 ```
 
