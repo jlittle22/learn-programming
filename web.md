@@ -56,7 +56,7 @@ The Web is built on the interactions of two types of players:
 - Clients
 
 ### Servers & URLs
-A [server](https://en.wikipedia.org/wiki/Web_server) is, simply put, a computer responsible for *serving* Web content. In reality, the precise definition is more complex, but for the purposes of basic tehcnical discussion, this one is suffciient. Web servers send and receive data over HTTP(S).
+A [server](https://en.wikipedia.org/wiki/Web_server) is, simply put, a computer responsible for *serving* Web content. In reality, the precise definition is more complex, but for the purposes of basic technical discussion, this one is sufficient. Web servers send and receive data over HTTP(S).
 
 The resources a server serves are identified by [uniform resource locators](https://en.wikipedia.org/wiki/URL) (i.e. URLs). A URL's *basic* structure will look familiar:
 ```
@@ -94,26 +94,109 @@ A web server's [client](https://en.wikipedia.org/wiki/Client_(computing)) is the
 
 ### HTTP(S)
 
-[HTTP](https://en.wikipedia.org/wiki/HTTP) is the communication protocol used by web servers and clients to speak to each other.
+[HTTP](https://en.wikipedia.org/wiki/HTTP) is the communication protocol used by web servers and clients to speak to each other. A [communication protocol](https://en.wikipedia.org/wiki/Communication_protocol) is "a system of rules that allows two or more entities of a communications system to transmit information via any variation of a physical quantity". For example, sport referees (e.g. football, basketball) use simple protocols to communicate their calls to spectators, team staffs, players, and so on. Two arms up is points scored in football and pointing at a team's basket means the ball went out of bounds and that team is taking possession in basketball. Before or after signaling their call, referees might signal a player's jersey number with their hands and specify a team. 45, "offense", hands on hips. The offensive player wearing number 45 was offsides.
 
-TODO(jsnl): Requests + response.
+The HTTP communication protocol is more complex, but the underlying principle is the same. Senders and receivers (computers speaking to eachother on the Web) agree to a shared set of signals (their [syntax](https://en.wikipedia.org/wiki/Syntax)) and their meanings (their [semantics](https://en.wikipedia.org/wiki/Semantics_(computer_science))). Because HTTP is so complex, I won't go into too much depth here.
+
+All of the web development that we do revolves around our servers and clients communicating with one another through _requests_ and _responses_.
+
+An HTTP request is simply a _request_ for information or action from a web server. When you direct your web browser to `www.google.com`, for example, it fires off more than 50 HTTP requests in the first 5 seconds of loading the page. Every HTTP request includes a _method_. A [request method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) a indicates the desired action the requester would like performed to the receiver. There are several request methods.
+
+The `GET` method "requests a representation of the specified resource". For example, the follow `GET` request might be sent to a web server running at `example.com` to ask for the server's representation on a user with ID `123` in [JSON](https://en.wikipedia.org/wiki/JSON) format:
+```
+GET /users/123 HTTP/1.1
+Host: example.com
+Accept: application/json
+```
+
+The `POST` method is used to "submit an entity to the specified resource". So upon registering for the web application serveed by `example.com`, a user's web browser might request that the server add their information (shared in JSON format) to its database of registered users:
+```
+POST /users HTTP/1.1
+Host: example.com
+Content-Type: application/json
+
+{
+  "name": "Bill Rogers",
+  "email": "bill@example.com" 
+}
+```
+
+Take a moment to read through a few of the other HTTP request methods linked above.
+
+#### Responses
+
+Once a web server has received an HTTP request and performed the appropriate action (e.g. retrieving a user's information from the database), it needs to send a _response_ to the client. HTTP responses are _always_ replies to previous HTTP requests. Similar to request methods, HTTP responses have [status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes). Status codes indicate the _status_ of the user's request to the server. For example, the status code `200 OK` is sent to indicate that the request operation was performed successfully. In addition to a status code, HTTP responses _may_ include accompanying data for the client to use, as in the case of a `GET` request.
+
+There are a many status codes, by they fall into a handful of buckets. From ["List of HTTP Status Codes"](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes):
+```
+1xx informational response – the request was received, continuing process
+2xx successful – the request was successfully received, understood, and accepted
+3xx redirection – further action needs to be taken in order to complete the request
+4xx client error – the request contains bad syntax or cannot be fulfilled
+5xx server error – the server failed to fulfil an apparently valid request
+```
+
+You may be familiar with arguably the _most_ famous HTTP status code, `404 Not Found`. Directing your web brower to `https://www.google.com/jake-made-this-up` will result in a `404 Not Found` response from Google's server because the resource `/jake-made-this-up` doesn't exist.
+
+To our earlier example of the `GET` request for a user with ID `123`, the web server at `example.com` might respond:
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": 123,
+  "name": "John Doe",
+  "email": "john.doe@example.com"
+}
+```
+The `200 OK` indicates that the requests was received, understood, and the appropriate action performed. `Content-Type` simple tells the client how it should consume the accompanying data. And finally, we see the response contains the information for the user whose ID is `123.
+
+If we make a similar `GET` request for a user with the ID `999` which does not exist, we might expect to see a response like:
+```
+HTTP/1.1 404 Not Found
+Content-Type: application/json
+
+{
+  "error": "User not found",
+  "message": "No user with ID 999 exists." 
+}
+```
+In this case, the `404 Not Found` status code indicates that while the server _understood_ our request, it wasn't able to find the request resource. The additional data in this case is an error message elaborating on the problem. While this error message isn't part of the HTTP protocol specification, we could infer that its inclusion is part of the _application's_ protocol. The web server knows that its client (a web application running in a person's browser) is expecting there to be a human-readable error message, perhaps so it can be displayed on the user's screen.
+
+Importantly, HTTP responses often contain Javascript, HTML, and CSS (three ingredients most often used to display a webpage). For example:
+```
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+
+<!doctype html>
+<html>
+<head>
+  ... (HTML head content) ...
+</head>
+<body>
+  ... (Webpage content) ...
+</body>
+</html>
+```
 
 ## Footnotes
+_Stuff that's off-topic, but interesting to me._
+
 [1] This is scratching the surface of an _incredibly_ interesting field of mathematics called [information theory](https://en.wikipedia.org/wiki/Information_theory). I did an internship working on data compression algorithms after my sophomore year and had the opportunity to learn a little bit about information theory. One of my biggest regrets from college is that I was never able to take an information theory course. Working in data compression (or some other information-theory-adjacent domain) is a career goal of mine.
 
-The critical concept in information theory (IT, for now) is [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)). Entropy represents the _profound_ mathematical reality that information can be _quantified_. If I were to ask you, "how much information is in this guide?", you're likely inclined to respond with something like "a lot", "a good amount", "a little bit", "none at all", etc. (These are all qualitative answers, not quantitative.) I doubt you'd respond "2948374 units of information".
+The critical concept in information theory is [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)). Entropy represents the _profound_ mathematical reality that information can be _quantified_. If I were to ask you, "how much information is in this guide?", you're likely inclined to respond with something like "a lot", "a good amount", "a little bit", "none at all", etc. (These are all qualitative answers, not quantitative.) I doubt you'd respond "2948374 units of information".
 
-IT is the branch of mathematics that focuses on answering that question _quantitatively_. (Spoiler: to my knowledge, that was a trick question and there is no _single_ correct quantitative answer.). The "unit" of information is measured in bits, a `1` or `0` and, in other words, the answer to a "yes" or "no" question.
+Information theory is the branch of mathematics that focuses on answering the question "how much data?" _quantitatively_. The "unit" of information is typically bits, a `1` or `0` and, in other words, the answer to a "yes" or "no" question.
 
-Entropy is a reasonably simple, but still too complex concept to cover in a footnote (that is already likely to be too long). But, the general idea that predictable data inherently contains less information that unpredictable data. Reduction to absurdity makes this idea feel a little more understandable.
+Entropy is a reasonably simple, but still too complex concept to cover in a footnote (that is already likely to be too long). But, the general idea that predictable data inherently contains less information than unpredictable data. Reduction to absurdity makes this idea feel a little more intuitive.
 
-Suppose you're lost in a new city (without a phone, I guess). There are two strangers that you can ask for directions (i.e. ask for information). You're told that one of the strangers, named Bill, has an odd trait in that he responds to _everything_ simply with "Yes!". He makes no perceivable physical gestures. No blinking. No eye movements. Nothing, but "Yes!". The other stranger, Tom, has a similar condition as Bill, except Tom can honestly respond with "Yes!" _or_ "No!". Which stranger will be able to share more information with you _in as single response_?
+Suppose you're lost in a new city (without a phone, I guess). There are two strangers that you can ask for directions (i.e. ask for information). You're told that one of the strangers, named Bill, has an odd trait in that he responds to _everything_ simply with "Yes!". He makes no perceivable physical gestures. No blinking. No eye movements. Nothing, but "Yes!". The other stranger, Tom, has a similar condition as Bill, except Tom can honestly respond with "Yes!" _or_ "No!". Which stranger will be able to share more information with you _in a single response_?
 
-Probably Tom because at least Tom's responses are _somewhat_ unpredictable. Granted, Tom won't be sharing information as quickly as a more typical person whose response is _even more_ unpredictable. But regardless, Tom is fundamentally usesful because each response is unpredictable. Tom's responses have more entropy than Bill's.
+Probably Tom because at least Tom's responses are _somewhat_ unpredictable. Granted, Tom won't be sharing information as quickly as a more typical person whose response is _even more_ unpredictable. But regardless, Tom is fundamentally useful because each response is unpredictable. Tom's responses have more entropy than Bill's.
 
-And importantly, you'll note that in order for this contrived scenario to make sense, I had to deliberately constrain the _other ways_ in which Bill might have been able to behave unpredictably, thus increasing the entropy of his responses, and thus the potential to share more information in each response. If Bill could only say "Yes!", but he could point, blink, shrug, make facial expressions of confusion or understanding, show thumbs up or down, and so on, he'd almost certainly be more useful than Tom.
+And importantly, you'll note that in order for this contrived scenario to make sense, I had to deliberately constrain the _other ways_ in which Bill might have been able to behave unpredictably, which would have allowed increasing the entropy of his responses, and thus the potential to share more information in each response. If Bill could only say "Yes!", but he could point, blink, shrug, make facial expressions of confusion or understanding, show thumbs up or down, and so on, he'd almost certainly be more useful than Tom.
 
-Developing a basic intuition for entropy and other basic concepts from information theory has been valuable in my career so far even though I don't work _directly_ in that domain. For example, we recently had a machine learning model that exhibited an odd behavior. The model, `M`, accepted 4 types of input data `A`, `B`, `C`, and `D` to produce an output result `Y`.
+Developing an intuition for entropy and other basic concepts from information theory has been valuable in my career so far even though I don't work _directly_ in that domain. For example, we recently had a machine learning model that exhibited an odd behavior. The model, `M`, accepted 4 types of input data `A`, `B`, `C`, and `D` to produce an output result `Y`.
 ```
 M(A, B, C, D) = Y
 ```
@@ -123,7 +206,7 @@ Well, it concretely means that the model "learned" to not weigh `D` data. Theore
 
 It's a difficult decision to say whether we should believe the model. On one hand, the evidence available to us clearly suggests that `D` is void of relevant information. On the other hand, perhaps the model itself wasn't _large_ enough to capture subtle traits in the `D` data that are in fact useful for solving the problem at hand (in other words, the model may not have enough **precision**) or it was trained in an inappropriate way.
 
-In either case, the answer is rooted in information theory. Recognizing that a signal can simply be entirely void of relevant information is reasonably abstract. For a concrete example, the stars and their positions in the sky is a sizeable chunk of data, but not many people would seriously argue that this data contains information relevant to the future performance of the stock market ([astrologists](https://en.wikipedia.org/wiki/Astrology) beg to differ). In theory, it could hold a _tiny_ amount predictive power. For example, maybe a handful of traders are ever-so-slightly inspired by the Orion constellation when its visible in their region and tend to buy more during those periods than others. But I doubt that's significant. 
+In either case, the answer is rooted in information theory. Recognizing that a signal can simply be entirely void of relevant information is reasonably abstract. For a concrete example, the stars and their positions in the sky is a sizeable chunk of data, but not many people would seriously argue that this data contains information relevant to the future performance of the stock market ([astrologists](https://en.wikipedia.org/wiki/Astrology) beg to differ). Hypothetically, it could hold a _tiny_ amount predictive power. For example, maybe a handful of traders are ever-so-slightly inspired by the Orion constellation when its visible in their region and tend to buy more during those periods than others. But I doubt that's significant. 
 
 Similarly, recognizing that while it is _feasible_ for a machine learning model to learn how to predict future performance of the stock market based on economonic signals, trades, geopolitics, climate change, and so on, it may be _infeasible_ for us to train a model large enough to _represent_ all of the mind-bogglingly complex relationships between these types of data.
 
