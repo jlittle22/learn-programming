@@ -1,5 +1,7 @@
 ```
-The World Wide Web (WWW or simply the Web) is an information system that enables content sharing over the Internet through user-friendly ways meant to appeal to users beyond IT specialists and hobbyists.
+The World Wide Web (WWW or simply the Web) is an information system that enables
+content sharing over the Internet through user-friendly ways meant to appeal to
+users beyond IT specialists and hobbyists.
 ```
 
 via [Wikipedia: World Wide Web](https://en.wikipedia.org/wiki/World_Wide_Web)
@@ -27,7 +29,9 @@ And just like _appropriate_ precision can improve the clarity of your communicat
 An anesthesiologist might think:
 
 ```
-"Well, the patient's history of severe aortic stenosis necessitates a lower dose of propofol to maintain hemodynamic stability and avoid precipitating a critical decrease in cardiac output during induction."
+"Well, the patient's history of severe aortic stenosis necessitates a lower dose
+of propofol to maintain hemodynamic stability and avoid precipitating a critical
+decrease in cardiac output during induction."
 ```
 
 We can easily observe two properties. First, the anesthesiologist is clearly leveraging their precise knowledge about severe aortic stenosis, propofol, hemodynamics, cardiac output, and induction to do some _high level_ reasoning about an _extraordinarily_ complex system (the human cardiovascular system). Second, the terms being mapped onto concrete meanings allows the anesthesiologist to reason about the _properties_ of abstract ideas. "Ah yes, severe aortic stenosis comes with properties A, B, and C. Propery C may interact with Property D of propofol to create hemodynamic instability which has properties... blah, blah, blah."
@@ -151,7 +155,7 @@ There are a many status codes, by they fall into a handful of buckets. From ["Li
 ```
 1xx informational response – the request was received, continuing process
 2xx successful – the request was successfully received, understood, and accepted
-3xx redirection – further action needs to be taken in order to complete the request
+3xx redirection – further action needs to be taken to complete the request
 4xx client error – the request contains bad syntax or cannot be fulfilled
 5xx server error – the server failed to fulfil an apparently valid request
 ```
