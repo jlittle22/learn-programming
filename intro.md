@@ -298,7 +298,7 @@ Output:
 The structure of a `for` loop is:
 
 ```javascript
-for (/* initialization */, /* condition */, /* afterthought */) {
+for (/* initialization */; /* condition */; /* afterthought */) {
   /* action */
 }
 ```
