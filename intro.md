@@ -39,7 +39,7 @@ In layman's terms, JavaScript is one of the most flexible languages in existence
 JavaScript: Just say no.
 ```
 
-Nonetheless, JavaScript is a reasonable place to start learning how to program. (It also happens to be the language our freelance projects use.)
+Nonetheless, JavaScript is a reasonable place to start learning how to program.
 
 ### Running code
 
