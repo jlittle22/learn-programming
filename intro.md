@@ -69,7 +69,7 @@ I use comments in code snippets to explain what's happening in the program, so p
 
 These are called "TODO" comments and, in industry source code, they document something that needs to be changed in the code. In my guides, they represent something I want the reader to do.
 
-Alternatively, you may seem comments that look like this:
+Alternatively, you may see comments that look like this:
 
 ```javascript
 // TODO(jsnl): <An instruction to do something.>
