@@ -4,7 +4,7 @@ content sharing over the Internet through user-friendly ways meant to appeal to
 users beyond IT specialists and hobbyists.
 ```
 
-via <a target="_blank" href="https://en.wikipedia.org/wiki/World_Wide_Web">Wikipedia: World Wide Web</a>
+via <a href="https://en.wikipedia.org/wiki/World_Wide_Web" target="_blank">Wikipedia: World Wide Web</a>
 
 ## Introduction
 
