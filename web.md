@@ -4,7 +4,7 @@ content sharing over the Internet through user-friendly ways meant to appeal to
 users beyond IT specialists and hobbyists.
 ```
 
-via [Wikipedia: World Wide Web](https://en.wikipedia.org/wiki/World_Wide_Web)
+via <a target="_blank" href="https://en.wikipedia.org/wiki/World_Wide_Web">Wikipedia: World Wide Web</a>
 
 ## Introduction
 
@@ -24,7 +24,7 @@ Ironically, I'm relatively imprecise in this guide. If I were writing this for a
 
 You've already learned that fact if you ever studied significant figures in science. The notation `5` communicates less information than the notation `5.0`, even though the two values are mathemtically equal. `5.0` is more precise than `5`.
 
-And just like _appropriate_ precision can improve the clarity of your communication, it can also improve the clarity of your _thinking_. If your brain deeply understands precise definitions for technical terms, you're able to use them to reason precisely. Reasoning with precise terms that represent abstract concepts is faster than reasoning about the abstract concepts themselves. Terms (i.e. names for things) are cognitive short-cuts that allow our brains to abstract (yes, like [abstraction](https://en.wikipedia.org/wiki/Abstraction)) away complexity and simplify our thought processes.
+And just like _appropriate_ precision can improve the clarity of your communication, it can also improve the clarity of your _thinking_. If your brain deeply understands precise definitions for technical terms, you're able to use them to reason precisely. Reasoning with precise terms that represent abstract concepts is faster than reasoning about the abstract concepts themselves. Terms (i.e. names for things) are cognitive short-cuts that allow our brains to abstract (yes, like <a target="_blank" href="https://en.wikipedia.org/wiki/Abstraction">abstraction</a>) away complexity and simplify our thought processes.
 
 An anesthesiologist might think:
 
@@ -42,7 +42,7 @@ If the terms you use to problem solve are sloppily defined, so will be your solu
 
 ## Principles of the Web
 
-(Disclaimer: This section is heavily inspired by course content from Noah Mendelsohn's ["Internet-scale Distributed Systems"](https://www.cs.tufts.edu/comp/117/principles). Noah is an [extremely well-credentialed contributor](https://engineering.tufts.edu/cs/people/faculty/noah-mendelsohn) to the World Wide Web. )
+(Disclaimer: This section is heavily inspired by course content from Noah Mendelsohn's <a target="_blank" href="https://www.cs.tufts.edu/comp/117/principles">"Internet-scale Distributed Systems"</a> to the World Wide Web. )
 
 ### 1. Be built for _everyone_.
 
@@ -60,7 +60,7 @@ A simple system is easier to adopt than a complex one. Simple systems are easier
 Everything should be as simple as it can be, but not simpler
 ```
 
--- [Einstein, maybe](https://quoteinvestigator.com/2011/05/13/einstein-simple/#more-2363).
+-- <a target="_blank" href="https://quoteinvestigator.com/2011/05/13/einstein-simple/#more-2363">Einstein, maybe</a>.
 
 ## Web Architecture
 
@@ -71,23 +71,23 @@ The Web is built on the interactions of two types of players:
 
 ### Servers
 
-A [server](https://en.wikipedia.org/wiki/Web_server) is, simply put, a computer responsible for _serving_ Web content. In reality, the precise definition is more complex, but for the purposes of basic technical discussion, this one is sufficient. Web servers send and receive data over HTTP(S).
+A <a target="_blank" href="https://en.wikipedia.org/wiki/Web_server">server</a> is, simply put, a computer responsible for _serving_ Web content. In reality, the precise definition is more complex, but for the purposes of basic technical discussion, this one is sufficient. Web servers send and receive data over HTTP(S).
 
-The resources a server serves are identified by [uniform resource locators](https://en.wikipedia.org/wiki/URL) (i.e. URLs). A URL's _basic_ structure will look familiar:
+The resources a server serves are identified by <a target="_blank" href="https://en.wikipedia.org/wiki/URL">uniform resource locators</a> (i.e. URLs). A URL's _basic_ structure will look familiar:
 
 ```
-<scheme>://<authority><path>
+<scheme>://<a target="_blank"uthority><path>
 
 e.g.
 
 <scheme> -> https
-<authority> -> www.google.com
+<a target="_blank"uthority> -> www.google.com
 <path> -> /maps
 
 https://www.google.com/maps
 ```
 
-In this example, the `scheme` specifies the resource's source and _usually_ (but not always) specifies a protocol over which the resource should be retrieved. For example, `http` and `https` are very common schemes which indicate that the resource is to be retrieved via the [Hypertext Transfer Protocol](https://en.wikipedia.org/wiki/HTTP) (HTTP, or HTTPS when the "secure" variant is used).
+In this example, the `scheme` specifies the resource's source and _usually_ (but not always) specifies a protocol over which the resource should be retrieved. For example, `http` and `https` are very common schemes which indicate that the resource is to be retrieved via the <a target="_blank" href="https://en.wikipedia.org/wiki/HTTP">Hypertext Transfer Protocol</a> (HTTP, or HTTPS when the "secure" variant is used).
 
 The `authority` specifies the _name_ or _location_ of the host computer which can serve the resource. In other words, the `authority` identifies the resource _server_. [3]
 
@@ -105,25 +105,25 @@ https://mail.google.com/mail/u/1/#settings/general
 
 The Web is called a "web" because these URLs acts as "links" in a _web_ of resources. Each resources points to even more resources.
 
-Software the traverses thise web of resources by following links is called a ["web crawler"](https://en.wikipedia.org/wiki/Web_crawler) and are used by, among other things, search engines to "index" resources on the web. The search engine is then responsible for organizing all of these indexed pages based on their apparent relevance to a user's query.
+Software the traverses thise web of resources by following links is called a <a target="_blank" href="https://en.wikipedia.org/wiki/Web_crawler">"web crawler"</a> and are used by, among other things, search engines to "index" resources on the web. The search engine is then responsible for organizing all of these indexed pages based on their apparent relevance to a user's query.
 
-As you might imagine, there are websites which are entirely disconnected from the rest of the "web" (in that nothing links to them) and are unable to be indexed by search engines (how could their web crawlers crawl to these sites?). These components of the Web are referred to as the [deep web](https://en.wikipedia.org/wiki/Deep_web). (The [dark web](https://en.wikipedia.org/wiki/Dark_web) is a _subset_ of the deep web which is _deliberately_ hidden from search engines rather.)
+As you might imagine, there are websites which are entirely disconnected from the rest of the "web" (in that nothing links to them) and are unable to be indexed by search engines (how could their web crawlers crawl to these sites?). These components of the Web are referred to as the <a target="_blank" href="https://en.wikipedia.org/wiki/Deep_web">deep web</a>. (The <a target="_blank" href="https://en.wikipedia.org/wiki/Dark_web">dark web</a> is a _subset_ of the deep web which is _deliberately_ hidden from search engines rather.)
 
 ### Clients
 
-A web server's [client](<https://en.wikipedia.org/wiki/Client_(computing)>) is the computer which is requesting a resource from the server. Clients are _often_, although not always, a personal computer like a laptop or phone. These types of clients are generally running a [web browser](https://en.wikipedia.org/wiki/Web_browser) to request web resources from servers and [render](https://developer.mozilla.org/en-US/docs/Web/Performance/How_browsers_work) (i.e. display) the resource to the end user (i.e. a person).
+A web server's <a target="_blank" href="https://en.wikipedia.org/wiki/Client_(computing)">client</a> is the computer which is requesting a resource from the server. Clients are _often_, although not always, a personal computer like a laptop or phone. These types of clients are generally running a <a target="_blank" href="https://en.wikipedia.org/wiki/Web_browser">web browser</a> to request web resources from servers and <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/Performance/How_browsers_work">render</a> (i.e. display) the resource to the end user (i.e. a person).
 
 ### HTTP(S)
 
-[HTTP](https://en.wikipedia.org/wiki/HTTP) is the communication protocol used by web servers and clients to speak to each other. A [communication protocol](https://en.wikipedia.org/wiki/Communication_protocol) is "a system of rules that allows two or more entities of a communications system to transmit information via any variation of a physical quantity". For example, sport referees (e.g. football, basketball) use simple protocols to communicate their calls to spectators, team staffs, players, and so on. Two arms up is points scored in football and pointing at a team's basket means the ball went out of bounds and that team is taking possession in basketball. Before or after signaling their call, referees might signal a player's jersey number with their hands and specify a team. 45, "offense", hands on hips. The offensive player wearing number 45 was offsides.
+<a target="_blank" href="https://en.wikipedia.org/wiki/HTTP">HTTP</a> is the communication protocol used by web servers and clients to speak to each other. A <a target="_blank" href="https://en.wikipedia.org/wiki/Communication_protocol">communication protocol</a> is "a system of rules that allows two or more entities of a communications system to transmit information via any variation of a physical quantity". For example, sport referees (e.g. football, basketball) use simple protocols to communicate their calls to spectators, team staffs, players, and so on. Two arms up is points scored in football and pointing at a team's basket means the ball went out of bounds and that team is taking possession in basketball. Before or after signaling their call, referees might signal a player's jersey number with their hands and specify a team. 45, "offense", hands on hips. The offensive player wearing number 45 was offsides.
 
-The HTTP communication protocol is more complex, but the underlying principle is the same. Senders and receivers (computers speaking to eachother on the Web) agree to a shared set of signals (their [syntax](https://en.wikipedia.org/wiki/Syntax)) and their meanings (their [semantics](<https://en.wikipedia.org/wiki/Semantics_(computer_science)>)). Because HTTP is so complex, I won't go into too much depth here.
+The HTTP communication protocol is more complex, but the underlying principle is the same. Senders and receivers (computers speaking to eachother on the Web) agree to a shared set of signals (their <a target="_blank" href="https://en.wikipedia.org/wiki/Syntax">syntax</a>) and their meanings (their <a target="_blank" href="https://en.wikipedia.org/wiki/Semantics_(computer_science)">semantics</a>). Because HTTP is so complex, I won't go into too much depth here.
 
 All of the web development that we do revolves around our servers and clients communicating with one another through _requests_ and _responses_.
 
-An HTTP request is simply a _request_ for information or action from a web server. When you direct your web browser to `www.google.com`, for example, it fires off more than 50 HTTP requests in the first 5 seconds of loading the page. Every HTTP request includes a _method_. A [request method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) a indicates the desired action the requester would like performed to the receiver. There are several request methods.
+An HTTP request is simply a _request_ for information or action from a web server. When you direct your web browser to `www.google.com`, for example, it fires off more than 50 HTTP requests in the first 5 seconds of loading the page. Every HTTP request includes a _method_. A <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods">request method</a> a indicates the desired action the requester would like performed to the receiver. There are several request methods.
 
-The `GET` method "requests a representation of the specified resource". For example, the follow `GET` request might be sent to a web server running at `example.com` to ask for the server's representation on a user with ID `123` in [JSON](https://en.wikipedia.org/wiki/JSON) format:
+The `GET` method "requests a representation of the specified resource". For example, the follow `GET` request might be sent to a web server running at `example.com` to ask for the server's representation on a user with ID `123` in <a target="_blank" href="https://en.wikipedia.org/wiki/JSON">JSON</a> format:
 
 ```
 GET /users/123 HTTP/1.1
@@ -148,9 +148,9 @@ Take a moment to read through a few of the other HTTP request methods linked abo
 
 #### Responses
 
-Once a web server has received an HTTP request and performed the appropriate action (e.g. retrieving a user's information from the database), it needs to send a _response_ to the client. HTTP responses are _always_ replies to previous HTTP requests. Similar to request methods, HTTP responses have [status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes). Status codes indicate the _status_ of the user's request to the server. For example, the status code `200 OK` is sent to indicate that the request operation was performed successfully. In addition to a status code, HTTP responses _may_ include accompanying data for the client to use, as in the case of a `GET` request.
+Once a web server has received an HTTP request and performed the appropriate action (e.g. retrieving a user's information from the database), it needs to send a _response_ to the client. HTTP responses are _always_ replies to previous HTTP requests. Similar to request methods, HTTP responses have <a target="_blank" href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">status codes</a>. Status codes indicate the _status_ of the user's request to the server. For example, the status code `200 OK` is sent to indicate that the request operation was performed successfully. In addition to a status code, HTTP responses _may_ include accompanying data for the client to use, as in the case of a `GET` request.
 
-There are a many status codes, by they fall into a handful of buckets. From ["List of HTTP Status Codes"](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes):
+There are a many status codes, by they fall into a handful of buckets. From <a target="_blank" href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">"List of HTTP Status Codes"</a>:
 
 ```
 1xx informational response – the request was received, continuing process
@@ -212,9 +212,9 @@ Content-Type: text/html; charset=UTF-8
 
 _Stuff that's off-topic, but interesting to me._
 
-[1] This is scratching the surface of an _incredibly_ interesting field of mathematics called [information theory](https://en.wikipedia.org/wiki/Information_theory). I did an internship working on data compression algorithms after my sophomore year and had the opportunity to learn a little bit about information theory. One of my biggest regrets from college is that I was never able to take an information theory course. Working in data compression (or some other information-theory-adjacent domain) is a career goal of mine.
+[1] This is scratching the surface of an _incredibly_ interesting field of mathematics called <a target="_blank" href="https://en.wikipedia.org/wiki/Information_theory">information theory</a>. I did an internship working on data compression algorithms after my sophomore year and had the opportunity to learn a little bit about information theory. One of my biggest regrets from college is that I was never able to take an information theory course. Working in data compression (or some other information-theory-adjacent domain) is a career goal of mine.
 
-The critical concept in information theory is [entropy](<https://en.wikipedia.org/wiki/Entropy_(information_theory)>). Entropy represents the _profound_ mathematical reality that information can be _quantified_. If I were to ask you, "how much information is in this guide?", you're likely inclined to respond with something like "a lot", "a good amount", "a little bit", "none at all", etc. (These are all qualitative answers, not quantitative.) I doubt you'd respond "2948374 units of information".
+The critical concept in information theory is <a target="_blank" href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">entropy</a>. Entropy represents the _profound_ mathematical reality that information can be _quantified_. If I were to ask you, "how much information is in this guide?", you're likely inclined to respond with something like "a lot", "a good amount", "a little bit", "none at all", etc. (These are all qualitative answers, not quantitative.) I doubt you'd respond "2948374 units of information".
 
 Information theory is the branch of mathematics that focuses on answering the question "how much data?" _quantitatively_. The "unit" of information is typically bits, a `1` or `0` and, in other words, the answer to a "yes" or "no" question.
 
@@ -238,10 +238,10 @@ Well, it concretely means that the model "learned" to not weigh `D` data. Theore
 
 It's a difficult decision to say whether we should believe the model. On one hand, the evidence available to us clearly suggests that `D` is void of relevant information. On the other hand, perhaps the model itself wasn't _large_ enough to capture subtle traits in the `D` data that are in fact useful for solving the problem at hand (in other words, the model may not have enough **precision**) or it was trained in an inappropriate way.
 
-In either case, the answer is rooted in information theory. Recognizing that a signal can simply be entirely void of relevant information is reasonably abstract. For a concrete example, the stars and their positions in the sky is a sizeable chunk of data, but not many people would seriously argue that this data contains information relevant to the future performance of the stock market ([astrologists](https://en.wikipedia.org/wiki/Astrology) beg to differ). Hypothetically, it could hold a _tiny_ amount predictive power. For example, maybe a handful of traders are ever-so-slightly inspired by the Orion constellation when its visible in their region and tend to buy more during those periods than others. But I doubt that's significant.
+In either case, the answer is rooted in information theory. Recognizing that a signal can simply be entirely void of relevant information is reasonably abstract. For a concrete example, the stars and their positions in the sky is a sizeable chunk of data, but not many people would seriously argue that this data contains information relevant to the future performance of the stock market (<a target="_blank" href="https://en.wikipedia.org/wiki/Astrology">astrologists</a> beg to differ). Hypothetically, it could hold a _tiny_ amount predictive power. For example, maybe a handful of traders are ever-so-slightly inspired by the Orion constellation when its visible in their region and tend to buy more during those periods than others. But I doubt that's significant.
 
 Similarly, recognizing that while it is _feasible_ for a machine learning model to learn how to predict future performance of the stock market based on economonic signals, trades, geopolitics, climate change, and so on, it may be _infeasible_ for us to train a model large enough to _represent_ all of the mind-bogglingly complex relationships between these types of data.
 
-[2] It's posited that it grows quadratically, not just "rapidly". See [Metcalfe's Law](https://en.wikipedia.org/wiki/Metcalfe's_law).
+[2] It's posited that it grows quadratically, not just "rapidly". See <a target="_blank" href="https://en.wikipedia.org/wiki/Metcalfe's_law">Metcalfe's Law</a>.
 
-[3] This is an oversimplification. For example, www.amazon.com doesn't map to a single web server. See [load balancing](<https://en.wikipedia.org/wiki/Load_balancing_(computing)>).
+[3] This is an oversimplification. For example, www.amazon.com doesn't map to a single web server. See <a target="_blank" href="https://en.wikipedia.org/wiki/Load_balancing_(computing)">load balancing</a>.
